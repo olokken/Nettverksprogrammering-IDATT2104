@@ -7,7 +7,7 @@ fn main() {
     let mut start = String::new();
     let mut slutt = String::new();
     let mut threads = Vec::new();
-    let primtall = Arc::new((Mutex::new(Vec::new())));
+    let primtall = Arc::new(Mutex::new(vec![])); 
 
      
     println!("Skriv det tallet du vil intervallet skal starte");
@@ -18,17 +18,19 @@ fn main() {
 
     let start_tall:u32 = start.trim().parse().unwrap();
     let slutt_tall:u32 = slutt.trim().parse().unwrap(); 
-    let intervaller = finn_intervaller(start_tall, slutt_tall, antall_traader); 
+    let intervaller = Arc::new(Mutex::new(finn_intervaller(start_tall, slutt_tall, antall_traader))); 
     
     for i in 0..antall_traader {
         let clone = Arc::clone(&primtall); 
+        let clone2 = Arc::clone(&intervaller); 
         let h = thread::spawn(move || {
-            for j in intervaller[i as usize]..intervaller[(i+1) as usize] {
+            let mut data = clone.lock().unwrap();
+            let data2 = clone2.lock().unwrap();
+            for j in data2[i as usize]..data2[(i+1) as usize] {
                 if is_prime(j) {
-                    clone.lock().unwrap().push(j); 
+                    data.push(j); 
                 }
             }
-            println!("Output from thread {}", i);
         });
         threads.push(h); 
     }
@@ -36,6 +38,7 @@ fn main() {
     for thread in threads {
         let _ = thread.join(); // let _ means that the return value should be ignored
     }
+    primtall.lock().unwrap().sort(); 
     println!("{:?}", primtall); 
 
 }
