@@ -62,7 +62,7 @@ fn finn_intervaller(start:u32, slutt:u32, antall:u32) -> Vec<u32> {
     vec.push(start); 
     let storrelse = (slutt - start)/antall;
     let mut neste = start + storrelse; 
-    for i in 0..antall-1 { 
+    for _i in 0..antall-1 { 
         vec.push(neste);
         neste += storrelse;  
     }

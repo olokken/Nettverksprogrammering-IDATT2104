@@ -24,12 +24,12 @@ public class WebTjener {
         alt += "</ul>";
         PrintWriter out = new PrintWriter(forbindelse.getOutputStream(), true);
         System.out.println("Skriv inn velkomstmeldingen til klienten i terminalen");
-        Scanner sc = new Scanner(System.in);
-        String velkomst = sc.nextLine();
+        //Scanner sc = new Scanner(System.in);
+        //String velkomst = sc.nextLine();
         out.println("HTTP/1.0 200 OK");
         out.println("Content-Type: text/html; charset=utf-8 (linjeskift)");
         out.println("\r\n");
-        out.println("<h1>" + velkomst + "</h1>");
+        out.println("<h1>" + "Heisann og hoppsann" + "</h1>");
         out.println(alt);
 
         forbindelse.close();

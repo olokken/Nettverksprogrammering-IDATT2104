@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "vector": "cpp",
+        "functional": "cpp",
+        "__mutex_base": "cpp",
+        "list": "cpp"
+    }
+}
