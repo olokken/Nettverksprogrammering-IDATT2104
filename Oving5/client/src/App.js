@@ -28,7 +28,7 @@ function App() {
       
       <div className="form-group mb-3">
         <label htmlFor="code">Skriv inn python-code under:</label>
-        <textarea className="form-control" id="code" name="code" rows="8" onChange={onCodeChange}></textarea>
+        <textarea className="form-control" id="code" name="code" rows="10" onChange={onCodeChange}></textarea>
       </div>
 
       <button type="button" onClick={onExecute} className="btn btn-primary">Execute</button>
