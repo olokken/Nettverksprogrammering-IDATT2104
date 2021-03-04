@@ -1,6 +1,5 @@
 version: "3.9"
 services:
-<<<<<<< HEAD
   api:
     build: .
     ports:
@@ -14,11 +13,9 @@ services:
 
 
     
-=======
   web:
     build: .
     ports:
       - "5000:5000"
   redis:
     image: "redis:alpine"
->>>>>>> a231efc813de10c744e213dc36568df6b3a35120
