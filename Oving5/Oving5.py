@@ -15,6 +15,10 @@ app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+@app.route("/react")
+def hostRact():  
+    return render_template("index.html", token = "Hello Flask + React")
+
 @app.route("/")
 def home():
     return { "message": "Hello"}
