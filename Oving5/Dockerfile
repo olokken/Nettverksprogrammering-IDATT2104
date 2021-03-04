@@ -1,10 +1,10 @@
 FROM python:3.9.0-alpine
-
 WORKDIR /OVING5
-
-ADD . /OVING5
-
+ENV FLASK_APP=Oving5.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-
-CMD ["python3", "Oving5.py"]
-
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run"]
